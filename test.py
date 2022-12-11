@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 
 #read csv
-data = pd.read_csv("game_predictor/nba_data.csv", header = 0)
+data = pd.read_csv("game_predictor/nba_data_norm.csv", header = 0)
 #data = pd.read_csv("nba_data.csv", header = 0)
 data.set_index("team_id")
 
@@ -27,4 +27,7 @@ def main(home_id, away_id):
     print (away_name + " odds: " + str(away_odds))
     print (home_name + " odds: " + str(home_odds))
 
-main(17, 21)
+main(2,5)
+main(10,15)
+main(24,18)
+main(28,2)
