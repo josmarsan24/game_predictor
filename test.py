@@ -18,6 +18,11 @@ def predict(home, away):
     away_odds = 100 * away_rtg / (home_rtg + away_rtg)
     return home_odds, away_odds
 
+def rtg_team(team):
+    rtg = team['PTS'].values[0]*0.333 + team['opPTS'].values[0]*0.333 + team['AST'].values[0]*0.167 + team['TRB'].values[0]*0.167
+    return rtg
+    
+
 def main(home_id, away_id):
     home, away = get_teams_by_id(home_id, away_id)
     home_name = home['Row.names'].values[0]
