@@ -1,10 +1,12 @@
 import pandas as pd
 import numpy as np
+import random
 
 #read csv
 data = pd.read_csv("nba_data_norm.csv", header = 0)
 #data = pd.read_csv("nba_data.csv", header = 0)
 data.set_index("team_id")
+games = pd.read_csv("nba_games.csv", header=0)
 
 def get_teams_by_id(home_id, away_id):
     home_team = data.loc[data['team_id'] == home_id]
@@ -36,3 +38,9 @@ main(2,5)
 main(10,15)
 main(24,18)
 main(28,2)
+
+def test():
+    test_games = games.sample(n=50)
+    print(test_games.head())
+
+test()
