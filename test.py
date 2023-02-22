@@ -3,14 +3,24 @@ import numpy as np
 import random
 
 #read csv
-data = pd.read_csv("nba_data_norm.csv", header = 0)
-#data = pd.read_csv("nba_data.csv", header = 0)
+try:
+    data = pd.read_csv("nba_data_norm.csv", header = 0)
+except:
+    data = pd.read_csv("game_predictor/nba_data_norm.csv", header = 0)
 data.set_index("team_id")
-games = pd.read_csv("nba_games.csv", header=0)
+try:
+    games = pd.read_csv("nba_games.csv", header=0)
+except:
+    games = pd.read_csv("game_predictor/nba_games.csv", header=0)
 
 def get_teams_by_id(home_id, away_id):
     home_team = data.loc[data['team_id'] == home_id]
     away_team = data.loc[data['team_id'] == away_id]
+    return home_team, away_team
+
+def get_teams_by_name(home_name, away_name):
+    home_team = data.loc[data['Row.names'] == home_name]
+    away_team = data.loc[data['Row.names'] == away_name]
     return home_team, away_team
 
 def predict(home, away):
@@ -21,7 +31,7 @@ def predict(home, away):
     return home_odds, away_odds
 
 def rtg_team(team):
-    rtg = team['PTS'].values[0]*0.333 + team['opPTS'].values[0]*0.333 + team['AST'].values[0]*0.167 + team['TRB'].values[0]*0.167
+    rtg = team['PTS'].values[0]*0.175 + team['PF'].values[0]*0.025 + team['TOV'].values[0]*0.05 + team['BLK'].values[0]*0.025 + team['STL'].values[0]*0.025 + team['AST'].values[0]*0.075 + team['TRB'].values[0]*0.075 + team['FG%'].values[0]*0.025 + team['3P%'].values[0]*0.025 + team['opPTS'].values[0]*0.175 + team['opPF'].values[0]*0.025 + team['opTOV'].values[0]*0.05 + team['opBLK'].values[0]*0.025 + team['opSTL'].values[0]*0.025 + team['opAST'].values[0]*0.075 + team['opTRB'].values[0]*0.075 + team['opFG%'].values[0]*0.025 + team['op3P%'].values[0]*0.025
     return rtg
     
 
@@ -34,13 +44,33 @@ def main(home_id, away_id):
     print (away_name + " odds: " + str(away_odds))
     print (home_name + " odds: " + str(home_odds))
 
+"""
 main(2,5)
 main(10,15)
 main(24,18)
 main(28,2)
+"""
 
 def test():
-    test_games = games.sample(n=50)
-    print(test_games.head())
-
-test()
+    test_games = games.sample(n=100)
+    right = 0
+    wrong = 0
+    for index, row in test_games.iterrows():
+        home_name = row['Home/Neutral']
+        away_name = row['Visitor/Neutral']
+        if (row['away_PTS'] > row['home_PTS']):
+            winner = away_name
+        else:
+            winner = home_name
+        home, away = get_teams_by_name(home_name,away_name)
+        home_odds, away_odds = predict(home,away)
+        if (away_odds > home_odds and winner==away_name) or (away_odds < home_odds and winner==home_name):
+            right += 1
+        else:
+            wrong += 1
+    return right, wrong
+            
+a,b = test()
+print("GAMES PREDICTED: ", a+b)
+print("RIGHT PREDICTIONS: ", a)
+print("WRONG PREDICTIONS: ", b)
