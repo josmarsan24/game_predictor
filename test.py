@@ -52,9 +52,10 @@ main(28,2)
 """
 
 def test():
-    test_games = games.sample(n=100)
+    test_games = games.sample(n=300)
     right = 0
     wrong = 0
+    really_wrong = 0
     for index, row in test_games.iterrows():
         home_name = row['Home/Neutral']
         away_name = row['Visitor/Neutral']
@@ -66,11 +67,15 @@ def test():
         home_odds, away_odds = predict(home,away)
         if (away_odds > home_odds and winner==away_name) or (away_odds < home_odds and winner==home_name):
             right += 1
+        elif (away_odds - home_odds > 20 and winner==home_name) or (home_odds - away_odds > 20 and winner==away_name):
+            wrong += 1
+            really_wrong += 1
         else:
             wrong += 1
-    return right, wrong
+    return right, wrong, really_wrong
             
-a,b = test()
+a,b,c = test()
 print("GAMES PREDICTED: ", a+b)
 print("RIGHT PREDICTIONS: ", a)
 print("WRONG PREDICTIONS: ", b)
+print("REALLY WRONG PREDICTIONS: ", c)
