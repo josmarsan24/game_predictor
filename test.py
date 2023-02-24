@@ -35,21 +35,10 @@ def rtg_team(team):
     return rtg
     
 
-def main(home_id, away_id):
-    home, away = get_teams_by_id(home_id, away_id)
-    home_name = home['Row.names'].values[0]
-    away_name = away['Row.names'].values[0]
+def predict_by_name(home_name, away_name):
+    home, away = get_teams_by_name(home_name,away_name)
     home_odds, away_odds = predict(home,away)
-    print (away_name + " at " + home_name)
-    print (away_name + " odds: " + str(away_odds))
-    print (home_name + " odds: " + str(home_odds))
-
-"""
-main(2,5)
-main(10,15)
-main(24,18)
-main(28,2)
-"""
+    return home_odds, away_odds
 
 def test():
     test_games = games.sample(n=300)
