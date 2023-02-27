@@ -1,0 +1,29 @@
+---
+title: "nba_data"
+author: "josmarsan24"
+date: '2022-11-08'
+output: html_document
+---
+
+install.packages("htmltab")
+install.packages("data.table")
+library(htmltab)
+library(data.table)
+
+url <- "https://www.basketball-reference.com/leagues/NBA_2022.html#per_game-team"
+data <- htmltab(doc = url,which=5)
+names(data)
+
+data_op <- htmltab(doc = url,which=6)
+names(data_op)
+
+rownames(data) <- data$Team
+data <-data[,c("FG%","3P%","TRB","AST","STL","BLK","TOV","PF","PTS")]
+
+rownames(data_op) <- data_op$Team
+data_op <- data_op[,c("FG%","3P%","TRB","AST","STL","BLK","TOV","PF","PTS")]
+colnames(data_op) <- c("opFG%","op3P%","opTRB","opAST","opSTL","opBLK","opTOV","opPF","opPTS")
+
+data <- merge(data,data_op, by="row.names")
+
+write.csv(data,"nba_data.csv", row.names = TRUE)

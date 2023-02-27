@@ -1,0 +1,94 @@
+Date,Visitor/Neutral,away_PTS,Home/Neutral,home_PTS
+Tue Apr 12 2022,Cleveland Cavaliers,108,Brooklyn Nets,115
+Tue Apr 12 2022,Los Angeles Clippers,104,Minnesota Timberwolves,109
+Wed Apr 13 2022,Charlotte Hornets,103,Atlanta Hawks,132
+Wed Apr 13 2022,San Antonio Spurs,103,New Orleans Pelicans,113
+Fri Apr 15 2022,Atlanta Hawks,107,Cleveland Cavaliers,101
+Fri Apr 15 2022,New Orleans Pelicans,105,Los Angeles Clippers,101
+Sat Apr 16 2022,Utah Jazz,99,Dallas Mavericks,93
+Sat Apr 16 2022,Minnesota Timberwolves,130,Memphis Grizzlies,117
+Sat Apr 16 2022,Toronto Raptors,111,Philadelphia 76ers,131
+Sat Apr 16 2022,Denver Nuggets,107,Golden State Warriors,123
+Sun Apr 17 2022,Atlanta Hawks,91,Miami Heat,115
+Sun Apr 17 2022,Brooklyn Nets,114,Boston Celtics,115
+Sun Apr 17 2022,Chicago Bulls,86,Milwaukee Bucks,93
+Sun Apr 17 2022,New Orleans Pelicans,99,Phoenix Suns,110
+Mon Apr 18 2022,Toronto Raptors,97,Philadelphia 76ers,112
+Mon Apr 18 2022,Utah Jazz,104,Dallas Mavericks,110
+Mon Apr 18 2022,Denver Nuggets,106,Golden State Warriors,126
+Tue Apr 19 2022,Atlanta Hawks,105,Miami Heat,115
+Tue Apr 19 2022,Minnesota Timberwolves,96,Memphis Grizzlies,124
+Tue Apr 19 2022,New Orleans Pelicans,125,Phoenix Suns,114
+Wed Apr 20 2022,Brooklyn Nets,107,Boston Celtics,114
+Wed Apr 20 2022,Philadelphia 76ers,104,Toronto Raptors,101
+Wed Apr 20 2022,Chicago Bulls,114,Milwaukee Bucks,110
+Thu Apr 21 2022,Memphis Grizzlies,104,Minnesota Timberwolves,95
+Thu Apr 21 2022,Dallas Mavericks,126,Utah Jazz,118
+Thu Apr 21 2022,Golden State Warriors,118,Denver Nuggets,113
+Fri Apr 22 2022,Miami Heat,110,Atlanta Hawks,111
+Fri Apr 22 2022,Milwaukee Bucks,111,Chicago Bulls,81
+Fri Apr 22 2022,Phoenix Suns,114,New Orleans Pelicans,111
+Sat Apr 23 2022,Philadelphia 76ers,102,Toronto Raptors,110
+Sat Apr 23 2022,Dallas Mavericks,99,Utah Jazz,100
+Sat Apr 23 2022,Boston Celtics,109,Brooklyn Nets,103
+Sat Apr 23 2022,Memphis Grizzlies,118,Minnesota Timberwolves,119
+Sun Apr 24 2022,Milwaukee Bucks,119,Chicago Bulls,95
+Sun Apr 24 2022,Golden State Warriors,121,Denver Nuggets,126
+Sun Apr 24 2022,Miami Heat,110,Atlanta Hawks,86
+Sun Apr 24 2022,Phoenix Suns,103,New Orleans Pelicans,118
+Mon Apr 25 2022,Boston Celtics,116,Brooklyn Nets,112
+Mon Apr 25 2022,Toronto Raptors,103,Philadelphia 76ers,88
+Mon Apr 25 2022,Utah Jazz,77,Dallas Mavericks,102
+Tue Apr 26 2022,Atlanta Hawks,94,Miami Heat,97
+Tue Apr 26 2022,Minnesota Timberwolves,109,Memphis Grizzlies,111
+Tue Apr 26 2022,New Orleans Pelicans,97,Phoenix Suns,112
+Wed Apr 27 2022,Chicago Bulls,100,Milwaukee Bucks,116
+Wed Apr 27 2022,Denver Nuggets,98,Golden State Warriors,102
+Thu Apr 28 2022,Philadelphia 76ers,132,Toronto Raptors,97
+Thu Apr 28 2022,Phoenix Suns,115,New Orleans Pelicans,109
+Thu Apr 28 2022,Dallas Mavericks,98,Utah Jazz,96
+Fri Apr 29 2022,Memphis Grizzlies,114,Minnesota Timberwolves,106
+Sun May 1 2022,Milwaukee Bucks,101,Boston Celtics,89
+Sun May 1 2022,Golden State Warriors,117,Memphis Grizzlies,116
+Mon May 2 2022,Philadelphia 76ers,92,Miami Heat,106
+Mon May 2 2022,Dallas Mavericks,114,Phoenix Suns,121
+Tue May 3 2022,Milwaukee Bucks,86,Boston Celtics,109
+Tue May 3 2022,Golden State Warriors,101,Memphis Grizzlies,106
+Wed May 4 2022,Philadelphia 76ers,103,Miami Heat,119
+Wed May 4 2022,Dallas Mavericks,109,Phoenix Suns,129
+Fri May 6 2022,Miami Heat,79,Philadelphia 76ers,99
+Fri May 6 2022,Phoenix Suns,94,Dallas Mavericks,103
+Sat May 7 2022,Boston Celtics,101,Milwaukee Bucks,103
+Sat May 7 2022,Memphis Grizzlies,112,Golden State Warriors,142
+Sun May 8 2022,Phoenix Suns,101,Dallas Mavericks,111
+Sun May 8 2022,Miami Heat,108,Philadelphia 76ers,116
+Mon May 9 2022,Boston Celtics,116,Milwaukee Bucks,108
+Mon May 9 2022,Memphis Grizzlies,98,Golden State Warriors,101
+Tue May 10 2022,Philadelphia 76ers,85,Miami Heat,120
+Tue May 10 2022,Dallas Mavericks,80,Phoenix Suns,110
+Wed May 11 2022,Milwaukee Bucks,110,Boston Celtics,107
+Wed May 11 2022,Golden State Warriors,95,Memphis Grizzlies,134
+Thu May 12 2022,Miami Heat,99,Philadelphia 76ers,90
+Thu May 12 2022,Phoenix Suns,86,Dallas Mavericks,113
+Fri May 13 2022,Boston Celtics,108,Milwaukee Bucks,95
+Fri May 13 2022,Memphis Grizzlies,96,Golden State Warriors,110
+Sun May 15 2022,Milwaukee Bucks,81,Boston Celtics,109
+Sun May 15 2022,Dallas Mavericks,123,Phoenix Suns,90
+Tue May 17 2022,Boston Celtics,107,Miami Heat,118
+Wed May 18 2022,Dallas Mavericks,87,Golden State Warriors,112
+Thu May 19 2022,Boston Celtics,127,Miami Heat,102
+Fri May 20 2022,Dallas Mavericks,117,Golden State Warriors,126
+Sat May 21 2022,Miami Heat,109,Boston Celtics,103
+Sun May 22 2022,Golden State Warriors,109,Dallas Mavericks,100
+Mon May 23 2022,Miami Heat,82,Boston Celtics,102
+Tue May 24 2022,Golden State Warriors,109,Dallas Mavericks,119
+Wed May 25 2022,Boston Celtics,93,Miami Heat,80
+Thu May 26 2022,Dallas Mavericks,110,Golden State Warriors,120
+Fri May 27 2022,Miami Heat,111,Boston Celtics,103
+Sun May 29 2022,Boston Celtics,100,Miami Heat,96
+Thu Jun 2 2022,Boston Celtics,120,Golden State Warriors,108
+Sun Jun 5 2022,Boston Celtics,88,Golden State Warriors,107
+Wed Jun 8 2022,Golden State Warriors,100,Boston Celtics,116
+Fri Jun 10 2022,Golden State Warriors,107,Boston Celtics,97
+Mon Jun 13 2022,Boston Celtics,94,Golden State Warriors,104
+Thu Jun 16 2022,Golden State Warriors,103,Boston Celtics,90
