@@ -1,4 +1,21 @@
-{% for key,value in form_data.items() %}
-<h2> {{key}}</h2>
-<p> {{value}}</p>
-{% endfor %}
+<!DOCTYPE html>
+<html>
+
+<div class="topnav">
+    <a href="/">Home</a>
+    <a href="/predict">Predict</a>
+    <a href="/about">About</a>
+    <a href="https://github.com/josmarsan24/game_predictor">GitHub</a>
+  </div>
+
+<h2>{{form_data.away_team}} vs {{form_data.home_team}}</h2>
+
+<img src={{ form_data.away_url }} width="200" height="200">
+<img src={{ form_data.home_url }} width="200" height="200">
+
+<p>Away team: {{form_data.away_team}}</p>
+<p>{{form_data.away_team}} odds: {{form_data.away_odds}}</p>
+<p>Home team: {{form_data.home_team}}</p>
+<p>{{form_data.home_team}} odds: {{form_data.home_odds}}</p>
+
+</html>
