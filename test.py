@@ -32,7 +32,7 @@ def test():
         else:
             wrong += 1
     return right, wrong, big_mistake, small_mistake
-            
+          
 a,b,c,d = test()
 print("GAMES PREDICTED: ", a+b)
 print("SUCCESS RATE: ", 100*a/(a+b),"%")
