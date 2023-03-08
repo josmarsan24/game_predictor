@@ -1,7 +1,10 @@
 import pandas as pd
 
 #read csv
-df = pd.read_csv("game_predictor/nba_data.csv", header = 0)
+try:
+    df = pd.read_csv("nba_data_norm.csv", header = 0)
+except:
+    df = pd.read_csv("game_predictor/nba_data_norm.csv", header = 0)
 
 not_abs_cols = ['team_id',"Row.names","FG%","3P%","opFG%","op3P%"]
 good_cols = ["TRB","AST","STL","BLK","PTS","opTOV","opPF"]
@@ -21,6 +24,8 @@ if len(df.columns) == len(not_abs_cols) + len(good_cols) + len(bad_cols):
             max = df.loc[df[col].idxmax()][col]
             min = df.loc[df[col].idxmin()][col]
             df[[col]] = df[[col]].apply(lambda n: 1 - ((n - min) / (max - min)))
+        elif col == "opFG%" or  col == "op3P%":
+            df[[col]] = df[[col]].apply(lambda n: 1 - n)
     
 else:
     print("error")
