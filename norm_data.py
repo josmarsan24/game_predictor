@@ -2,9 +2,9 @@ import pandas as pd
 
 #read csv
 try:
-    df = pd.read_csv("nba_data_norm.csv", header = 0)
+    df = pd.read_csv("nba_data.csv", header = 0)
 except:
-    df = pd.read_csv("game_predictor/nba_data_norm.csv", header = 0)
+    df = pd.read_csv("game_predictor/nba_data.csv", header = 0)
 
 not_abs_cols = ['team_id',"Row.names","FG%","3P%","opFG%","op3P%"]
 good_cols = ["TRB","AST","STL","BLK","PTS","opTOV","opPF"]
