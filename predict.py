@@ -35,6 +35,13 @@ def predict_with_home_adv(home, away):
     away_odds = 100 * away_rtg / (home_rtg + away_rtg)
     return home_odds, away_odds
 
+def predict_without_FG3P(home, away):
+    home_rtg = home['PTS'].values[0]*0.175 + home['PF'].values[0]*0.025 + home['TOV'].values[0]*0.05 + home['BLK'].values[0]*0.025 + home['STL'].values[0]*0.025 + home['AST'].values[0]*0.075 + home['TRB'].values[0]*0.075 + home['opPTS'].values[0]*0.175 + home['opPF'].values[0]*0.025 + home['opTOV'].values[0]*0.05 + home['opBLK'].values[0]*0.025 + home['opSTL'].values[0]*0.025 + home['opAST'].values[0]*0.075 + home['opTRB'].values[0]*0.075
+    away_rtg = away['PTS'].values[0]*0.175 + away['PF'].values[0]*0.025 + away['TOV'].values[0]*0.05 + away['BLK'].values[0]*0.025 + away['STL'].values[0]*0.025 + away['AST'].values[0]*0.075 + away['TRB'].values[0]*0.075 + away['opPTS'].values[0]*0.175 + away['opPF'].values[0]*0.025 + away['opTOV'].values[0]*0.05 + away['opBLK'].values[0]*0.025 + away['opSTL'].values[0]*0.025 + away['opAST'].values[0]*0.075 + away['opTRB'].values[0]*0.075
+    home_odds = 100 * home_rtg / (home_rtg + away_rtg)
+    away_odds = 100 * away_rtg / (home_rtg + away_rtg)
+    return home_odds, away_odds
+
 def rtg_team(team):
     rtg = team['PTS'].values[0]*0.175 + team['PF'].values[0]*0.025 + team['TOV'].values[0]*0.05 + team['BLK'].values[0]*0.025 + team['STL'].values[0]*0.025 + team['AST'].values[0]*0.075 + team['TRB'].values[0]*0.075 + team['FG%'].values[0]*0.025 + team['3P%'].values[0]*0.025 + team['opPTS'].values[0]*0.175 + team['opPF'].values[0]*0.025 + team['opTOV'].values[0]*0.05 + team['opBLK'].values[0]*0.025 + team['opSTL'].values[0]*0.025 + team['opAST'].values[0]*0.075 + team['opTRB'].values[0]*0.075 + team['opFG%'].values[0]*0.025 + team['op3P%'].values[0]*0.025
     return rtg
@@ -45,6 +52,8 @@ def predict_by_name(home_name, away_name, v):
         home_odds, away_odds = predict(home,away)
     elif str(v) == 'home advantage':
         home_odds, away_odds = predict_with_home_adv(home,away)
+    elif str(v) == 'no FG% or 3P%':
+        home_odds, away_odds = predict_without_FG3P(home,away)
     else:
         home_odds, away_odds = 0.0
     return home_odds, away_odds
