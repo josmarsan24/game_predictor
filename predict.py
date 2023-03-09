@@ -29,8 +29,10 @@ def predict(home, away):
 def predict_with_home_adv(home, away):
     home_rtg = home['PTS'].values[0]*0.175 + home['PF'].values[0]*0.025 + home['TOV'].values[0]*0.05 + home['BLK'].values[0]*0.025 + home['STL'].values[0]*0.025 + home['AST'].values[0]*0.075 + home['TRB'].values[0]*0.075 + home['FG%'].values[0]*0.025 + home['3P%'].values[0]*0.025 + home['opPTS'].values[0]*0.175 + home['opPF'].values[0]*0.025 + home['opTOV'].values[0]*0.05 + home['opBLK'].values[0]*0.025 + home['opSTL'].values[0]*0.025 + home['opAST'].values[0]*0.075 + home['opTRB'].values[0]*0.075 + home['opFG%'].values[0]*0.025 + home['op3P%'].values[0]*0.025
     away_rtg = away['PTS'].values[0]*0.175 + away['PF'].values[0]*0.025 + away['TOV'].values[0]*0.05 + away['BLK'].values[0]*0.025 + away['STL'].values[0]*0.025 + away['AST'].values[0]*0.075 + away['TRB'].values[0]*0.075 + away['FG%'].values[0]*0.025 + away['3P%'].values[0]*0.025 + away['opPTS'].values[0]*0.175 + away['opPF'].values[0]*0.025 + away['opTOV'].values[0]*0.05 + away['opBLK'].values[0]*0.025 + away['opSTL'].values[0]*0.025 + away['opAST'].values[0]*0.075 + away['opTRB'].values[0]*0.075 + away['opFG%'].values[0]*0.025 + away['op3P%'].values[0]*0.025
-    home_odds = 110 * home_rtg / (home_rtg + away_rtg)
-    away_odds = 90 * away_rtg / (home_rtg + away_rtg)
+    home_rtg = 1.1 * home_rtg
+    away_rtg = 0.9 * away_rtg
+    home_odds = 100 * home_rtg / (home_rtg + away_rtg)
+    away_odds = 100 * away_rtg / (home_rtg + away_rtg)
     return home_odds, away_odds
 
 def rtg_team(team):
@@ -41,7 +43,7 @@ def predict_by_name(home_name, away_name, v):
     home, away = get_teams_by_name(home_name,away_name)
     if str(v) == '1.0':
         home_odds, away_odds = predict(home,away)
-    elif str(v) == '1.1':
+    elif str(v) == 'home advantage':
         home_odds, away_odds = predict_with_home_adv(home,away)
     else:
         home_odds, away_odds = 0.0
