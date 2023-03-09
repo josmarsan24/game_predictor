@@ -21,6 +21,7 @@ Crear un entorno virtual:
 - source entorno/bin/activate
 
 Ejecutar el flask:
+- cd game_predictor
 - export FLASK_APP=app 
 - export FLASK_ENV=development
 - flask run
