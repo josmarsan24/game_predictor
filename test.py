@@ -110,6 +110,32 @@ def test_no_fg_no_3p(test_games):
             wrong += 1
     return right, wrong, big_mistake, small_mistake
 
+def test_predict_by_name(test_games,v):
+    right = 0
+    wrong = 0
+    small_mistake = 0
+    big_mistake = 0
+    for index, row in test_games.iterrows():
+        home_name = row['Home/Neutral']
+        away_name = row['Visitor/Neutral']
+        if (row['away_PTS'] > row['home_PTS']):
+            winner = away_name
+        else:
+            winner = home_name
+        home_odds, away_odds = predict_by_name(home_name,away_name,v)
+        if (away_odds > home_odds and winner==away_name) or (away_odds < home_odds and winner==home_name):
+            right += 1
+        elif (away_odds - home_odds > 20 and winner==home_name) or (home_odds - away_odds > 20 and winner==away_name):
+            wrong += 1
+            big_mistake += 1
+        elif (away_odds - home_odds < 10 and winner==home_name) or (home_odds - away_odds < 10 and winner==away_name):
+            wrong += 1
+            small_mistake += 1
+        else:
+            wrong += 1
+    return right, wrong, big_mistake, small_mistake
+
+
 def print_test(desc,a,b,c,d):
     print(desc)
     print("SUCCESS RATE: ", 100*a/(a+b),"%")
@@ -123,16 +149,18 @@ def print_test(desc,a,b,c,d):
 test_games = games.sample(n=500)
 print("GAMES PREDICTED: ", 500)
 
-a,b,c,d = test(test_games)
+a,b,c,d = test_predict_by_name(test_games,'1.0')
 print_test('USING DEFAULT FORMULA',a,b,c,d)
 
 a,b,c,d = test_home_adv(test_games,1.1)
 print_test('USING 1.1% HOME ADVANTAGE',a,b,c,d)
 a,b,c,d = test_home_adv(test_games,1.05)
-print_test('USING 1.05 HOME ADVANTAGE',a,b,c,d)
+print_test('USING 1.05% HOME ADVANTAGE',a,b,c,d)
 a,b,c,d = test_home_adv(test_games,1.075)
 print_test('USING 1.075% HOME ADVANTAGE',a,b,c,d)
-a,b,c,d = test_adv_home_adv(test_games)
+a,b,c,d = test_predict_by_name(test_games,'advanced home advantage')
 print_test('USING ADVANCED HOME ADVANTAGE',a,b,c,d)
-a,b,c,d = test_no_fg_no_3p(test_games)
+a,b,c,d = test_predict_by_name(test_games,'no FG% or 3P%')
 print_test('IGNORING FG% AND 3P%',a,b,c,d)
+a,b,c,d = test_predict_by_name(test_games,'h2h')
+print_test('USING H2H',a,b,c,d)

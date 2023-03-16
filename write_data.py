@@ -82,5 +82,5 @@ def add_vict(record, home):
         return '0-0'
 
 
-h2h()
+#h2h()
 #home_adv()
