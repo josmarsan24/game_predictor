@@ -152,6 +152,9 @@ print("GAMES PREDICTED: ", 500)
 a,b,c,d = test_predict_by_name(test_games,'1.0')
 print_test('USING DEFAULT FORMULA',a,b,c,d)
 
+a,b,c,d = test_predict_by_name(test_games,'1.1')
+print_test('USING NEW RATING',a,b,c,d)
+'''
 a,b,c,d = test_home_adv(test_games,1.1)
 print_test('USING 1.1% HOME ADVANTAGE',a,b,c,d)
 a,b,c,d = test_home_adv(test_games,1.05)
@@ -163,4 +166,4 @@ print_test('USING ADVANCED HOME ADVANTAGE',a,b,c,d)
 a,b,c,d = test_predict_by_name(test_games,'no FG% or 3P%')
 print_test('IGNORING FG% AND 3P%',a,b,c,d)
 a,b,c,d = test_predict_by_name(test_games,'h2h')
-print_test('USING H2H',a,b,c,d)
+print_test('USING H2H',a,b,c,d)'''

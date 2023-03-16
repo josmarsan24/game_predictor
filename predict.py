@@ -105,10 +105,24 @@ def rtg_team(team):
     rtg = team['PTS'].values[0]*0.175 + team['PF'].values[0]*0.025 + team['TOV'].values[0]*0.05 + team['BLK'].values[0]*0.025 + team['STL'].values[0]*0.025 + team['AST'].values[0]*0.075 + team['TRB'].values[0]*0.075 + team['FG%'].values[0]*0.025 + team['3P%'].values[0]*0.025 + team['opPTS'].values[0]*0.175 + team['opPF'].values[0]*0.025 + team['opTOV'].values[0]*0.05 + team['opBLK'].values[0]*0.025 + team['opSTL'].values[0]*0.025 + team['opAST'].values[0]*0.075 + team['opTRB'].values[0]*0.075 + team['opFG%'].values[0]*0.025 + team['op3P%'].values[0]*0.025
     return rtg
 
+def new_rtg_team(team):
+    rtg = team['PTS'].values[0]*0.15 + team['PF'].values[0]*0.025 + team['TOV'].values[0]*0.075 + team['BLK'].values[0]*0.025 + team['STL'].values[0]*0.025 + team['AST'].values[0]*0.05 + team['TRB'].values[0]*0.05 + team['FG%'].values[0]*0.05 + team['3P%'].values[0]*0.05 + team['opPTS'].values[0]*0.15 + team['opPF'].values[0]*0.025 + team['opTOV'].values[0]*0.075 + team['opBLK'].values[0]*0.025 + team['opSTL'].values[0]*0.025 + team['opAST'].values[0]*0.05 + team['opTRB'].values[0]*0.05 + team['opFG%'].values[0]*0.05 + team['op3P%'].values[0]*0.05
+    return rtg
+def predict_new_rtg(home,away):
+    home_rtg = new_rtg_team(home)
+    away_rtg = new_rtg_team(away)
+    home_odds = 100 * home_rtg / (home_rtg + away_rtg)
+    away_odds = 100 * away_rtg / (home_rtg + away_rtg)
+    return home_odds, away_odds
+
+
+
 def predict_by_name(home_name, away_name, v):
     home, away = get_teams_by_name(home_name,away_name)
     if str(v) == '1.0':
         home_odds, away_odds = predict(home,away)
+    elif str(v) == '1.1':
+        home_odds, away_odds = predict_new_rtg(home,away)
     elif str(v) == 'home advantage':
         home_odds, away_odds = predict_with_home_adv(home,away)
     elif str(v) == 'advanced home advantage':
@@ -118,5 +132,5 @@ def predict_by_name(home_name, away_name, v):
     elif str(v) == 'h2h':
         home_odds, away_odds = predict_with_h2h(home,away)
     else:
-        home_odds, away_odds = 0.5
+        return 0.5,0.5
     return home_odds, away_odds
