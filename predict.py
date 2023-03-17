@@ -74,7 +74,7 @@ def get_rating_by_type(team,rtg):
     elif rtg == 'no FG% or 3P%':
         rating = rtg_no_fg_no3p(team)
     else:
-        rating = 0.0
+        rating = -1
     return rating
 
 def predict_with_home_adv(home_rtg, away_rtg):
