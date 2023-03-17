@@ -49,54 +49,7 @@ def get_h2h(home_name,away_name):
 
         return 1,1
 
-def predict(home, away):
-    home_rtg = home['PTS'].values[0]*0.175 + home['PF'].values[0]*0.025 + home['TOV'].values[0]*0.05 + home['BLK'].values[0]*0.025 + home['STL'].values[0]*0.025 + home['AST'].values[0]*0.075 + home['TRB'].values[0]*0.075 + home['FG%'].values[0]*0.025 + home['3P%'].values[0]*0.025 + home['opPTS'].values[0]*0.175 + home['opPF'].values[0]*0.025 + home['opTOV'].values[0]*0.05 + home['opBLK'].values[0]*0.025 + home['opSTL'].values[0]*0.025 + home['opAST'].values[0]*0.075 + home['opTRB'].values[0]*0.075 + home['opFG%'].values[0]*0.025 + home['op3P%'].values[0]*0.025
-    away_rtg = away['PTS'].values[0]*0.175 + away['PF'].values[0]*0.025 + away['TOV'].values[0]*0.05 + away['BLK'].values[0]*0.025 + away['STL'].values[0]*0.025 + away['AST'].values[0]*0.075 + away['TRB'].values[0]*0.075 + away['FG%'].values[0]*0.025 + away['3P%'].values[0]*0.025 + away['opPTS'].values[0]*0.175 + away['opPF'].values[0]*0.025 + away['opTOV'].values[0]*0.05 + away['opBLK'].values[0]*0.025 + away['opSTL'].values[0]*0.025 + away['opAST'].values[0]*0.075 + away['opTRB'].values[0]*0.075 + away['opFG%'].values[0]*0.025 + away['op3P%'].values[0]*0.025
-    home_odds = 100 * home_rtg / (home_rtg + away_rtg)
-    away_odds = 100 * away_rtg / (home_rtg + away_rtg)
-    return home_odds, away_odds
-
-def predict_with_home_adv(home, away):
-    home_rtg = home['PTS'].values[0]*0.175 + home['PF'].values[0]*0.025 + home['TOV'].values[0]*0.05 + home['BLK'].values[0]*0.025 + home['STL'].values[0]*0.025 + home['AST'].values[0]*0.075 + home['TRB'].values[0]*0.075 + home['FG%'].values[0]*0.025 + home['3P%'].values[0]*0.025 + home['opPTS'].values[0]*0.175 + home['opPF'].values[0]*0.025 + home['opTOV'].values[0]*0.05 + home['opBLK'].values[0]*0.025 + home['opSTL'].values[0]*0.025 + home['opAST'].values[0]*0.075 + home['opTRB'].values[0]*0.075 + home['opFG%'].values[0]*0.025 + home['op3P%'].values[0]*0.025
-    away_rtg = away['PTS'].values[0]*0.175 + away['PF'].values[0]*0.025 + away['TOV'].values[0]*0.05 + away['BLK'].values[0]*0.025 + away['STL'].values[0]*0.025 + away['AST'].values[0]*0.075 + away['TRB'].values[0]*0.075 + away['FG%'].values[0]*0.025 + away['3P%'].values[0]*0.025 + away['opPTS'].values[0]*0.175 + away['opPF'].values[0]*0.025 + away['opTOV'].values[0]*0.05 + away['opBLK'].values[0]*0.025 + away['opSTL'].values[0]*0.025 + away['opAST'].values[0]*0.075 + away['opTRB'].values[0]*0.075 + away['opFG%'].values[0]*0.025 + away['op3P%'].values[0]*0.025
-    home_rtg = 1.1 * home_rtg
-    away_rtg = 0.9 * away_rtg
-    home_odds = 100 * home_rtg / (home_rtg + away_rtg)
-    away_odds = 100 * away_rtg / (home_rtg + away_rtg)
-    return home_odds, away_odds
-
-def predict_with_custom_home_adv(home, away,home_adv):
-    home_rtg = home['PTS'].values[0]*0.175 + home['PF'].values[0]*0.025 + home['TOV'].values[0]*0.05 + home['BLK'].values[0]*0.025 + home['STL'].values[0]*0.025 + home['AST'].values[0]*0.075 + home['TRB'].values[0]*0.075 + home['FG%'].values[0]*0.025 + home['3P%'].values[0]*0.025 + home['opPTS'].values[0]*0.175 + home['opPF'].values[0]*0.025 + home['opTOV'].values[0]*0.05 + home['opBLK'].values[0]*0.025 + home['opSTL'].values[0]*0.025 + home['opAST'].values[0]*0.075 + home['opTRB'].values[0]*0.075 + home['opFG%'].values[0]*0.025 + home['op3P%'].values[0]*0.025
-    away_rtg = away['PTS'].values[0]*0.175 + away['PF'].values[0]*0.025 + away['TOV'].values[0]*0.05 + away['BLK'].values[0]*0.025 + away['STL'].values[0]*0.025 + away['AST'].values[0]*0.075 + away['TRB'].values[0]*0.075 + away['FG%'].values[0]*0.025 + away['3P%'].values[0]*0.025 + away['opPTS'].values[0]*0.175 + away['opPF'].values[0]*0.025 + away['opTOV'].values[0]*0.05 + away['opBLK'].values[0]*0.025 + away['opSTL'].values[0]*0.025 + away['opAST'].values[0]*0.075 + away['opTRB'].values[0]*0.075 + away['opFG%'].values[0]*0.025 + away['op3P%'].values[0]*0.025
-    home_rtg = home_adv * home_rtg
-    away_rtg = (2 - home_adv) * away_rtg
-    home_odds = 100 * home_rtg / (home_rtg + away_rtg)
-    away_odds = 100 * away_rtg / (home_rtg + away_rtg)
-    return home_odds, away_odds
-
-def predict_with_advanced_home_adv(home, away):
-    home_WL, away_WL = get_home_away_WL(home['team_id'].values[0],away['team_id'].values[0])
-    home_rtg = home['PTS'].values[0]*0.175 + home['PF'].values[0]*0.025 + home['TOV'].values[0]*0.05 + home['BLK'].values[0]*0.025 + home['STL'].values[0]*0.025 + home['AST'].values[0]*0.075 + home['TRB'].values[0]*0.075 + home['FG%'].values[0]*0.025 + home['3P%'].values[0]*0.025 + home['opPTS'].values[0]*0.175 + home['opPF'].values[0]*0.025 + home['opTOV'].values[0]*0.05 + home['opBLK'].values[0]*0.025 + home['opSTL'].values[0]*0.025 + home['opAST'].values[0]*0.075 + home['opTRB'].values[0]*0.075 + home['opFG%'].values[0]*0.025 + home['op3P%'].values[0]*0.025
-    away_rtg = away['PTS'].values[0]*0.175 + away['PF'].values[0]*0.025 + away['TOV'].values[0]*0.05 + away['BLK'].values[0]*0.025 + away['STL'].values[0]*0.025 + away['AST'].values[0]*0.075 + away['TRB'].values[0]*0.075 + away['FG%'].values[0]*0.025 + away['3P%'].values[0]*0.025 + away['opPTS'].values[0]*0.175 + away['opPF'].values[0]*0.025 + away['opTOV'].values[0]*0.05 + away['opBLK'].values[0]*0.025 + away['opSTL'].values[0]*0.025 + away['opAST'].values[0]*0.075 + away['opTRB'].values[0]*0.075 + away['opFG%'].values[0]*0.025 + away['op3P%'].values[0]*0.025
-    home_rtg = home_rtg * (1 + home_WL - away_WL)
-    away_rtg = away_rtg * (1 + away_WL - home_WL)
-    home_odds = 100 * home_rtg / (home_rtg + away_rtg)
-    away_odds = 100 * away_rtg / (home_rtg + away_rtg)
-    return home_odds, away_odds
-
-def predict_without_FG3P(home, away):
-    home_rtg = home['PTS'].values[0]*0.175 + home['PF'].values[0]*0.025 + home['TOV'].values[0]*0.05 + home['BLK'].values[0]*0.025 + home['STL'].values[0]*0.025 + home['AST'].values[0]*0.075 + home['TRB'].values[0]*0.075 + home['opPTS'].values[0]*0.175 + home['opPF'].values[0]*0.025 + home['opTOV'].values[0]*0.05 + home['opBLK'].values[0]*0.025 + home['opSTL'].values[0]*0.025 + home['opAST'].values[0]*0.075 + home['opTRB'].values[0]*0.075
-    away_rtg = away['PTS'].values[0]*0.175 + away['PF'].values[0]*0.025 + away['TOV'].values[0]*0.05 + away['BLK'].values[0]*0.025 + away['STL'].values[0]*0.025 + away['AST'].values[0]*0.075 + away['TRB'].values[0]*0.075 + away['opPTS'].values[0]*0.175 + away['opPF'].values[0]*0.025 + away['opTOV'].values[0]*0.05 + away['opBLK'].values[0]*0.025 + away['opSTL'].values[0]*0.025 + away['opAST'].values[0]*0.075 + away['opTRB'].values[0]*0.075
-    home_odds = 100 * home_rtg / (home_rtg + away_rtg)
-    away_odds = 100 * away_rtg / (home_rtg + away_rtg)
-    return home_odds, away_odds
-
-def predict_with_h2h(home, away):
-    home_rtg = home['PTS'].values[0]*0.175 + home['PF'].values[0]*0.025 + home['TOV'].values[0]*0.05 + home['BLK'].values[0]*0.025 + home['STL'].values[0]*0.025 + home['AST'].values[0]*0.075 + home['TRB'].values[0]*0.075 + home['FG%'].values[0]*0.025 + home['3P%'].values[0]*0.025 + home['opPTS'].values[0]*0.175 + home['opPF'].values[0]*0.025 + home['opTOV'].values[0]*0.05 + home['opBLK'].values[0]*0.025 + home['opSTL'].values[0]*0.025 + home['opAST'].values[0]*0.075 + home['opTRB'].values[0]*0.075 + home['opFG%'].values[0]*0.025 + home['op3P%'].values[0]*0.025
-    away_rtg = away['PTS'].values[0]*0.175 + away['PF'].values[0]*0.025 + away['TOV'].values[0]*0.05 + away['BLK'].values[0]*0.025 + away['STL'].values[0]*0.025 + away['AST'].values[0]*0.075 + away['TRB'].values[0]*0.075 + away['FG%'].values[0]*0.025 + away['3P%'].values[0]*0.025 + away['opPTS'].values[0]*0.175 + away['opPF'].values[0]*0.025 + away['opTOV'].values[0]*0.05 + away['opBLK'].values[0]*0.025 + away['opSTL'].values[0]*0.025 + away['opAST'].values[0]*0.075 + away['opTRB'].values[0]*0.075 + away['opFG%'].values[0]*0.025 + away['op3P%'].values[0]*0.025
-    home_adv, away_adv = get_h2h(home['Row.names'].values[0],away['Row.names'].values[0])
-    home_rtg = home_adv * home_rtg
-    away_rtg = away_adv * away_rtg
+def predict(home_rtg, away_rtg):
     home_odds = 100 * home_rtg / (home_rtg + away_rtg)
     away_odds = 100 * away_rtg / (home_rtg + away_rtg)
     return home_odds, away_odds
@@ -108,29 +61,72 @@ def rtg_team(team):
 def new_rtg_team(team):
     rtg = team['PTS'].values[0]*0.15 + team['PF'].values[0]*0.025 + team['TOV'].values[0]*0.075 + team['BLK'].values[0]*0.025 + team['STL'].values[0]*0.025 + team['AST'].values[0]*0.05 + team['TRB'].values[0]*0.05 + team['FG%'].values[0]*0.05 + team['3P%'].values[0]*0.05 + team['opPTS'].values[0]*0.15 + team['opPF'].values[0]*0.025 + team['opTOV'].values[0]*0.075 + team['opBLK'].values[0]*0.025 + team['opSTL'].values[0]*0.025 + team['opAST'].values[0]*0.05 + team['opTRB'].values[0]*0.05 + team['opFG%'].values[0]*0.05 + team['op3P%'].values[0]*0.05
     return rtg
-def predict_new_rtg(home,away):
-    home_rtg = new_rtg_team(home)
-    away_rtg = new_rtg_team(away)
+
+def rtg_no_fg_no3p(team):
+    rtg = team['PTS'].values[0]*0.175 + team['PF'].values[0]*0.025 + team['TOV'].values[0]*0.05 + team['BLK'].values[0]*0.025 + team['STL'].values[0]*0.025 + team['AST'].values[0]*0.075 + team['TRB'].values[0]*0.075 + team['opPTS'].values[0]*0.175 + team['opPF'].values[0]*0.025 + team['opTOV'].values[0]*0.05 + team['opBLK'].values[0]*0.025 + team['opSTL'].values[0]*0.025 + team['opAST'].values[0]*0.075 + team['opTRB'].values[0]*0.075
+    return rtg
+
+def get_rating_by_type(team,rtg):
+    if rtg == '1.0':
+        rating = rtg_team(team)
+    elif rtg == '1.1':
+        rating = new_rtg_team(team)
+    elif rtg == 'no FG% or 3P%':
+        rating = rtg_no_fg_no3p(team)
+    else:
+        rating = 0.0
+    return rating
+
+def predict_with_home_adv(home_rtg, away_rtg):
+    home_rtg = 1.1 * home_rtg
+    away_rtg = 0.9 * away_rtg
     home_odds = 100 * home_rtg / (home_rtg + away_rtg)
     away_odds = 100 * away_rtg / (home_rtg + away_rtg)
     return home_odds, away_odds
 
+def predict_with_custom_home_adv(home_rtg, away_rtg,home_adv):
+    home_rtg = home_adv * home_rtg
+    away_rtg = (2 - home_adv) * away_rtg
+    home_odds = 100 * home_rtg / (home_rtg + away_rtg)
+    away_odds = 100 * away_rtg / (home_rtg + away_rtg)
+    return home_odds, away_odds
 
+def predict_with_advanced_home_adv(home, away, rtg):
+    home_rtg = get_rating_by_type(home,rtg)
+    away_rtg = get_rating_by_type(away,rtg)
+    
+    home_WL, away_WL = get_home_away_WL(home['team_id'].values[0],away['team_id'].values[0])
+    home_rtg = home_rtg * (1 + home_WL - away_WL)
+    away_rtg = away_rtg * (1 + away_WL - home_WL)
+    home_odds = 100 * home_rtg / (home_rtg + away_rtg)
+    away_odds = 100 * away_rtg / (home_rtg + away_rtg)
+    return home_odds, away_odds
 
-def predict_by_name(home_name, away_name, v):
+def predict_with_h2h(home, away, rtg):
+    home_rtg = get_rating_by_type(home,rtg)
+    away_rtg = get_rating_by_type(away,rtg)
+    
+    home_adv, away_adv = get_h2h(home['Row.names'].values[0],away['Row.names'].values[0])
+    home_rtg = home_adv * home_rtg
+    away_rtg = away_adv * away_rtg
+    home_odds = 100 * home_rtg / (home_rtg + away_rtg)
+    away_odds = 100 * away_rtg / (home_rtg + away_rtg)
+    return home_odds, away_odds
+
+def predict_by_name(home_name, away_name, v, rtg):
     home, away = get_teams_by_name(home_name,away_name)
-    if str(v) == '1.0':
-        home_odds, away_odds = predict(home,away)
-    elif str(v) == '1.1':
-        home_odds, away_odds = predict_new_rtg(home,away)
+    home_rtg = get_rating_by_type(home,rtg)
+    away_rtg = get_rating_by_type(away,rtg)
+    
+    if str(v) == 'default':
+        home_odds, away_odds = predict(home_rtg,away_rtg)
     elif str(v) == 'home advantage':
-        home_odds, away_odds = predict_with_home_adv(home,away)
+        home_odds, away_odds = predict_with_home_adv(home_rtg,away_rtg)
     elif str(v) == 'advanced home advantage':
-        home_odds, away_odds = predict_with_advanced_home_adv(home,away)
-    elif str(v) == 'no FG% or 3P%':
-        home_odds, away_odds = predict_without_FG3P(home,away)
+        home_odds, away_odds = predict_with_advanced_home_adv(home,away,rtg)
     elif str(v) == 'h2h':
-        home_odds, away_odds = predict_with_h2h(home,away)
+        home_odds, away_odds = predict_with_h2h(home,away,rtg)
     else:
-        return 0.5,0.5
+        return 50.0,50.0
+    
     return home_odds, away_odds
