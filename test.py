@@ -179,19 +179,7 @@ def print_test(desc,a,b,c,d):
 train=games.sample(frac=0.67,random_state=200)
 test=games.drop(train.index)
 
-
-print("GAMES PREDICTED: ", len(test))
-
-train_h2h = create_test_h2h(train)
-a,b,c,d = test_h2h(train_h2h, '1.0', test)
-print_test('USING H2H: 67% TRAIN DATA AND 33% TEST DATA',a,b,c,d)
-
-a,b,c,d = test_predict_by_name(test,'default','1.0')
-print_test('USING DEFAULT FORMULA',a,b,c,d)
-
-a,b,c,d = test_predict_by_name(test,'h2h','1.0')
-print_test('USING H2H',a,b,c,d)
-
+print("GAMES PREDICTED: ", len(games))
 
 a,b,c,d = test_predict_by_name(games,'default','1.0')
 print_test('USING DEFAULT FORMULA',a,b,c,d)
@@ -200,17 +188,25 @@ print_test('IGNORING FG% AND 3P%',a,b,c,d)
 a,b,c,d = test_predict_by_name(games,'default','1.1')
 print_test('USING NEW RATING',a,b,c,d)
 
-'''
-a,b,c,d = test_home_adv(test_games,1.1,'1.0')
+a,b,c,d = test_home_adv(games,1.1,'1.1')
 print_test('USING 1.1% HOME ADVANTAGE',a,b,c,d)
-a,b,c,d = test_home_adv(test_games,1.05,'1.0')
+a,b,c,d = test_home_adv(games,1.05,'1.1')
 print_test('USING 1.05% HOME ADVANTAGE',a,b,c,d)
-a,b,c,d = test_home_adv(test_games,1.075,'1.0')
+a,b,c,d = test_home_adv(games,1.075,'1.1')
 print_test('USING 1.075% HOME ADVANTAGE',a,b,c,d)
 
 
-a,b,c,d = test_predict_by_name(test_games,'advanced home advantage','1.0')
+a,b,c,d = test_predict_by_name(games,'advanced home advantage','1.1')
 print_test('USING ADVANCED HOME ADVANTAGE',a,b,c,d)
 
-a,b,c,d = test_predict_by_name(test_games,'h2h','1.0')
-print_test('USING H2H',a,b,c,d)'''
+print("GAMES PREDICTED: ", len(test))
+
+train_h2h = create_test_h2h(train)
+a,b,c,d = test_h2h(train_h2h, '1.0', test)
+print_test('USING H2H: 67% TRAIN DATA AND 33% TEST DATA',a,b,c,d)
+
+a,b,c,d = test_predict_by_name(test,'default','1.1')
+print_test('USING DEFAULT FORMULA',a,b,c,d)
+
+a,b,c,d = test_predict_by_name(test,'h2h','1.1')
+print_test('USING H2H',a,b,c,d)
