@@ -181,32 +181,30 @@ test=games.drop(train.index)
 
 print("GAMES PREDICTED: ", len(games))
 
-a,b,c,d = test_predict_by_name(games,'default','1.0')
-print_test('USING DEFAULT FORMULA',a,b,c,d)
-a,b,c,d = test_predict_by_name(games,'default','no FG% or 3P%')
-print_test('IGNORING FG% AND 3P%',a,b,c,d)
-a,b,c,d = test_predict_by_name(games,'default','1.1')
-print_test('USING NEW RATING',a,b,c,d)
+rating = ['1.0','no FG% or 3P%','1.1']
+version = ['default','home advantage','advanced home advantage','h2h']
+advantages = [1.1,1.075,1.05]
+def test_all(games):
+    test_results = pd.DataFrame(columns = ['rtg','default','1.1','1.075','1.05','advanced home advantage','h2h'])
+    test_results['rtg'] = rating
+    for v in version:
+        if (v == 'home advantage'):
+            for adv in advantages:
+                for rtg in rating:
+                    a,b,c,d = test_home_adv(games,adv,rtg)
+                    print_test('USING ' + str(adv) + '% ' + v + ' AND RATING: ' + rtg ,a,b,c,d)
+                    test_results.loc[test_results['rtg'] == rtg,str(adv)] = 100*a/(a+b)
+        elif (v == 'h2h'):
+            train_h2h = create_test_h2h(train)
+            for rtg in rating:
+                a,b,c,d = test_h2h(train_h2h, rtg, test)
+                print_test('USING H2H: 67% TRAIN DATA AND 33% TEST DATA AND RATING: ' + rtg,a,b,c,d)
+                test_results.loc[test_results['rtg'] == rtg,v] = 100*a/(a+b)
+        else:
+            for rtg in rating:
+                a,b,c,d = test_predict_by_name(games,v,rtg)
+                print_test('USING ' + v + ' AND RATING: ' + rtg ,a,b,c,d)
+                test_results.loc[test_results['rtg'] == rtg,v] = 100*a/(a+b)
+    test_results.to_csv('test_results.csv',index=False,header=True)
 
-a,b,c,d = test_home_adv(games,1.1,'1.1')
-print_test('USING 1.1% HOME ADVANTAGE',a,b,c,d)
-a,b,c,d = test_home_adv(games,1.05,'1.1')
-print_test('USING 1.05% HOME ADVANTAGE',a,b,c,d)
-a,b,c,d = test_home_adv(games,1.075,'1.1')
-print_test('USING 1.075% HOME ADVANTAGE',a,b,c,d)
-
-
-a,b,c,d = test_predict_by_name(games,'advanced home advantage','1.1')
-print_test('USING ADVANCED HOME ADVANTAGE',a,b,c,d)
-
-print("GAMES PREDICTED: ", len(test))
-
-train_h2h = create_test_h2h(train)
-a,b,c,d = test_h2h(train_h2h, '1.0', test)
-print_test('USING H2H: 67% TRAIN DATA AND 33% TEST DATA',a,b,c,d)
-
-a,b,c,d = test_predict_by_name(test,'default','1.1')
-print_test('USING DEFAULT FORMULA',a,b,c,d)
-
-a,b,c,d = test_predict_by_name(test,'h2h','1.1')
-print_test('USING H2H',a,b,c,d)
+test_all(games)
