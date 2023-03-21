@@ -49,6 +49,23 @@ def get_h2h(home_name,away_name):
 
         return 1,1
 
+def get_h2h_custom(home_name,away_name,h2h):
+    try:
+        home_rec = h2h.loc[h2h['home_team']==home_name][away_name].values[0]
+        away_rec = h2h.loc[h2h['home_team']==away_name][home_name].values[0]
+
+        home_wr = float(home_rec.split('-')[0]) / (float(home_rec.split('-')[0]) + float(home_rec.split('-')[1]))
+        away_wr = float(away_rec.split('-')[1]) / (float(away_rec.split('-')[0]) + float(away_rec.split('-')[1]))
+        n = (float(home_rec.split('-')[0])) + float(home_rec.split('-')[1]) + (float(away_rec.split('-')[0]) + float(away_rec.split('-')[1]))
+        
+        home_adv = 1 - 0.5 + (home_wr*2+away_wr)/3
+        away_adv = 1 + 0.5 - (home_wr*2+away_wr)/3
+
+        return home_adv, away_adv
+    except:
+
+        return 1,1
+
 def predict(home_rtg, away_rtg):
     home_odds = 100 * home_rtg / (home_rtg + away_rtg)
     away_odds = 100 * away_rtg / (home_rtg + away_rtg)
@@ -112,6 +129,18 @@ def predict_with_h2h(home, away, rtg):
     home_odds = 100 * home_rtg / (home_rtg + away_rtg)
     away_odds = 100 * away_rtg / (home_rtg + away_rtg)
     return home_odds, away_odds
+
+def predict_with_h2h_custom_data(home, away, rtg, df):
+    home_rtg = get_rating_by_type(home,rtg)
+    away_rtg = get_rating_by_type(away,rtg)
+    
+    home_adv, away_adv = get_h2h_custom(home['Row.names'].values[0],away['Row.names'].values[0],df)
+    home_rtg = home_adv * home_rtg
+    away_rtg = away_adv * away_rtg
+    home_odds = 100 * home_rtg / (home_rtg + away_rtg)
+    away_odds = 100 * away_rtg / (home_rtg + away_rtg)
+    return home_odds, away_odds
+
 
 def predict_by_name(home_name, away_name, v, rtg):
     home, away = get_teams_by_name(home_name,away_name)

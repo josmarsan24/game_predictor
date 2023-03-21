@@ -14,7 +14,7 @@ except:
     wr = pd.read_csv("game_predictor/win_rate.csv", header=0)
     wr.set_index("team_id")
 
-def home_adv():
+def home_adv(games):
     df = wr
     df['home_W/L'] = 0
     df['away_W/L'] = 0
@@ -26,7 +26,7 @@ def home_adv():
     df['away_W/L'] = 1 - df['home_W/L']
     df.to_csv('win_rate.csv', index=False, header=True)
 
-def h2h():
+def h2h(games):
     df = pd.DataFrame(columns = ['team_id','home_team','Atlanta Hawks',
         'Boston Celtics',
         'Brooklyn Nets',
@@ -82,5 +82,5 @@ def add_vict(record, home):
         return '0-0'
 
 
-#h2h()
-#home_adv()
+#h2h(games)
+#home_adv(games)
