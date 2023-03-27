@@ -159,3 +159,7 @@ def predict_by_name(home_name, away_name, v, rtg):
         return 50.0,50.0
     
     return home_odds, away_odds
+
+bos, bkn = get_teams_by_name('Boston Celtics','Brooklyn Nets')
+print(get_rating_by_type(bos,'1.0'))
+print(get_rating_by_type(bkn,'1.0'))
