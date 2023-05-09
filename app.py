@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 from predict import predict_by_name
+from werkzeug.exceptions import HTTPException
 
 app = Flask(__name__)
 
@@ -11,6 +12,10 @@ def index():
 @app.route('/predict')
 def predict():
     return render_template('predict.html')
+
+@app.route('/help')
+def help():
+    return render_template('help.html')
 
 @app.route('/result', methods = ['POST', 'GET'])
 def result():
@@ -28,4 +33,17 @@ def result():
         away_url = "static/" + away_team.replace(" ","") + ".png"
         form_data = {'away_team':away_team,'away_odds':round(away_odds,2),'home_team':home_team,'home_odds':round(home_odds,2), 'away_url': away_url, 'home_url': home_url}
         return render_template('result.html',form_data = form_data)
+    
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
+
+
+@app.errorhandler(Exception)
+def handle_exception(e):
+    # pass through HTTP errors
+    if isinstance(e, HTTPException):
+        return e
+
+    return render_template("500.html", e=e), 500
 
