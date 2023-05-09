@@ -21,7 +21,9 @@ def result():
         home_team = request.form['home_team']
         v = request.form['v']
         rtg = request.form['rtg']
-        home_odds, away_odds = predict_by_name(home_team,away_team,v,rtg)
+        season = request.form['season']
+        season = str(season.split('-')[1])
+        home_odds, away_odds = predict_by_name(home_team,away_team,v,rtg,season)
         home_url = "static/" + home_team.replace(" ","") + ".png"
         away_url = "static/" + away_team.replace(" ","") + ".png"
         form_data = {'away_team':away_team,'away_odds':round(away_odds,2),'home_team':home_team,'home_odds':round(home_odds,2), 'away_url': away_url, 'home_url': home_url}
