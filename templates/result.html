@@ -2,30 +2,119 @@
 <html>
 
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>BASKTEBALL GAME PREDICTOR</title>
 </head>
 
-<div class="topnav">
-    <a href="/">Home</a>
-    <a href="/predict">Predict</a>
-    <a href="/help">Help</a>
-    <a href="https://github.com/josmarsan24/game_predictor">GitHub</a>
-  </div>
+<style>
+  header {
+    background-color: #333;
+    color: #fff;
+    height: 50px;
+    line-height: 50px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    text-align: center;
+  }
 
-<h2>{{form_data.away_team}} vs {{form_data.home_team}}</h2>
+  body {
+      margin: 0;
+      padding-top: 60px;
+    }
 
-<img src={{ form_data.away_url }} width="200" height="200">
-<img src={{ form_data.home_url }} width="200" height="200">
+  nav {
+      float: left;
+    }
+
+  ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    
+  li {
+      display: inline-block;
+      margin-left: 20px;
+    }
+
+    .link-1 {
+      color: #fff;
+      text-decoration: none;
+      font-size: 18px;
+      padding: 0 10px;
+    }
+    
+    .link-1:hover {
+      background-color: #555;
+    }
+    
+    div {
+      background-color: white;
+    }
+
+  @media (max-width: 768px) {
+      li {
+        display: inline-block;
+        margin: 10px;
+      }
+    }
+  
+    h2 {
+      color: #333;
+      font-size: 30px;
+    }
+
+    p {
+      color: #333;
+      font-size:20px;
+    }
+
+    p1 {
+      color: #8B0000;
+      font-size:15px;
+    }
+    
+    p2 {
+      color: #333;
+      font-size:25px;
+    }
+
+    img {
+      width:150px; 
+      height:150px;
+
+    }
+
+</style>
+
+<header>
+  <nav>
+    <ul>
+      <li><a href="/" class="link-1">Home</a></li>
+      <li><a href="/predict" class="link-1">Predict</a></li>
+      <li><a href="/help" class="link-1">Help</a></li>
+      <li><a href="https://github.com/josmarsan24/game_predictor" class="link-1">GitHub</a></li>
+    </ul>
+  </nav>
+</header> 
+
+<h2>&nbsp;{{form_data.away_team}} vs {{form_data.home_team}}</h2>
+
+<img src={{ form_data.away_url }} >
+<img src={{ form_data.home_url }} >
 <br>
 
-<p1>{{form_data.warning}}</p1>
+<p1>&nbsp;{{form_data.warning}}</p1>
 
-<p>Away team: {{form_data.away_team}}</p>
-<p>{{form_data.away_team}} odds: {{form_data.away_odds}} %</p>
-<p>Home team: {{form_data.home_team}}</p>
-<p>{{form_data.home_team}} odds: {{form_data.home_odds}} %</p>
+<p>&nbsp;Away team: {{form_data.away_team}}</p>
+<p>&nbsp;{{form_data.away_team}} odds: {{form_data.away_odds}} %</p>
+<p>&nbsp;Home team: {{form_data.home_team}}</p>
+<p>&nbsp;{{form_data.home_team}} odds: {{form_data.home_odds}} %</p>
 
-<p2>{{form_data.message}}</p2>
+<p2>&nbsp;{{form_data.message}}</p2>
 
 
 </html>
