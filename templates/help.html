@@ -13,9 +13,68 @@
     <a href="https://github.com/josmarsan24/game_predictor">GitHub</a>
   </div>
 
-<h1>How this works</h1>
-<p>This application was made in Python</p>
-<p>This was made by Jose Martin as part of an university project</p>
+<h1>Introduction</h1>
+<p>This application was using Python with Flask for the web application, also hosted in pythonaywhere</p>
+<p>It can also be deployed in local following the instructions in the Readme.md in the GitHub repository, the instructions are thought for Ubuntu however you can run it in Windows using WSL.
+</p>
+
+<h1>How it works</h1>
+<p>The way the app makes the predictions it calculates a rating for each team based on the data of the season. It uses the standard data like points, assists or rebounds per game for each team</p>
+<p>Then it divides the rating by the addition of both ratings and multiplies it by 100 to obtain the odds of each team </p>
+
+<h2>Ratings</h2>
+<p>There are three ways to calculate the rating for the team, the first one i developed called 1.0 that was the first iteration of the rating, the second one called 1.1 was made trying to improve the first rating and the last rating its called noFG%no3P% which obviusly ignores that data</p>
+
+<h2>Versions</h2>
+<p>There are three versions of the formula called default, home advantage, advanced home advantage and h2h</p>
+<p>Default just divides the rating the way it was mentioned before</p>
+<p>Home advantage gives an advantage to the home team by slightly increasing its rating</p>
+<p>Advanced home advantage gives an advantage or disadvantage to the team based on how well they perform at home for the home team and away for the away the team</p>
+<p>h2h takes into consideration the head to head of the given teams</p>
+
+<h2>Accuracy</h2>
+<p>This is the table for the accuracy of each formula for the 2021-2022 season</p>
+<table>
+  <thead>
+    <tr>
+      <th>Rating</th>
+      <th>Default</th>
+      <th>Ventaja local 1.1</th>
+      <th>Home advantage</th>
+      <th>h2h</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1.0 rating</td>
+      <td>64.31%</td>
+      <td>62.82%</td>
+      <td>66.67%</td>
+      <td>62.56%</td>
+    </tr>
+    <tr>
+      <td>no FG% no 3P% rating</td>
+      <td>63.98%</td>
+      <td>63.09%</td>
+      <td>66.67%</td>
+      <td>62.32%</td>
+    </tr>
+    <tr>
+      <td>1.1 rating</td>
+      <td>65.20%</td>
+      <td>62.92%</td>
+      <td>66.17%</td>
+      <td>63.05%</td>
+    </tr>
+  </tbody>
+</table>
+
+<h1>Useful links</h1>
+<p><a href="https://www.informatica.us.es/">ETSII (University of Seville)</a></p>
+<p><a href="https://github.com/josmarsan24/game_predictor">GitHub</a></p>
+<p><a href="https://www.basketball-reference.com/">BasketBall Reference</a></p>
+<p><a href="https://www.pythonanywhere.com/">pythonaywhere</a></p>
+
 
 </body>
 </html> 
