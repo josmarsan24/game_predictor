@@ -33,8 +33,7 @@ def result():
         away_url = "static/" + away_team.replace(" ","") + ".png"
         warning = ''
         message = get_message(home_team,away_team,float(home_odds),float(away_odds))
-        print(message)
-
+        
         if away_team == home_team:
             warning = 'Warning: You have chosen the same team twice so the results might not make sense'
 

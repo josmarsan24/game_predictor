@@ -201,7 +201,6 @@ def predict_by_name(home_name, away_name, v, rtg, season='2022'):
     return home_odds, away_odds
 
 def get_message(home_team,away_team,home_odds,away_odds):
-    print(home_team,away_team,home_odds,away_odds)
     if home_odds == away_odds:
         return 'The odds for each team are the same, the game is as close as it could be'
     elif home_odds - away_odds > 10:

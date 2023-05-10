@@ -38,7 +38,4 @@ def stats_analysis(data,wr):
 
 stats_analysis(data,wr)
 
-'''n = 600
-print("Home team win rate: ", 100*home_win_rate(n)/n, "%")
-print("Total games: ", n)'''
 
