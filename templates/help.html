@@ -102,6 +102,14 @@
 
 <h2>Ratings</h2>
 <p>There are three ways to calculate the rating for the team, the first one i developed called 1.0 that was the first iteration of the rating, the second one called 1.1 was made trying to improve the first rating and the last rating its called noFG%no3P% which obviusly ignores that data</p>
+<p>1.0 rating formula: </p>
+<p>rating = 0.175*pts + 0.025*pf + 0.05*tov + 0.025*blk + 0.025*stl + 0.075*ast + 0.075*trb + 0.025*fg% + 0.025*3p% +  0.175*opPts + 0.025*opPf + 0.05*opTov + 0.025*opBlk + 0.025*opStl + 0.075*opAst + 0.075*opTrb + 0.025*opFg% + 0.025*op3p%</p>
+<p>1.1 rating formula: </p>
+<p>rating = 0.15*pts + 0.025*pf + 0.075*tov + 0.025*blk + 0.025*stl + 0.05*ast + 0.05*trb + 0.05*fg% + 0.05*3p% +  0.15*opPts + 0.025*opPf + 0.075*opTov + 0.025*opBlk + 0.025*opStl + 0.05*opAst + 0.05*opTrb + 0.05*opFg% + 0.05*3p%</p>
+<p>No FG% no 3P% rating: </p>
+<p>rating = 0.225*pts + 0.025*pf + 0.05*tov + 0.025*blk + 0.025*stl + 0.075*ast + 0.075*trb +  0.225*opPts + 0.025*opPf + 0.05*opTov + 0.025*opBlk + 0.025*opStl + 0.075*opAst + 0.075*opTrb</p>
+<br>
+<p>Meaning: pts points, pf personal fouls, tov turnovers, blk blocks, stl steals, ast assits, trb total rebounds, fg% field goald percentage and 3p% three point percentage. When the data is preceded by op it means the average oponent data</p>
 
 <h2>Versions</h2>
 <p>There are three versions of the formula called default, home advantage, advanced home advantage and h2h</p>
@@ -109,6 +117,9 @@
 <p>Home advantage gives an advantage to the home team by slightly increasing its rating</p>
 <p>Advanced home advantage gives an advantage or disadvantage to the team based on how well they perform at home for the home team and away for the away the team</p>
 <p>h2h takes into consideration the head to head of the given teams</p>
+
+<h2>Season</h2>
+<p>You can also select the NBA season to be the source of the data we will use for the prediction, so far we have implemented data for the 2021-2022 and 2022-2023 season. But new data for new seasons can be easily implemented</p>
 
 <h2>Accuracy</h2>
 <p>This is the table for the accuracy of each formula for the 2021-2022 season</p>
