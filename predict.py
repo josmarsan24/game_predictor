@@ -204,16 +204,16 @@ def get_message(home_team,away_team,home_odds,away_odds):
     if home_odds == away_odds:
         return 'The odds for each team are the same, the game is as close as it could be'
     elif home_odds - away_odds > 10:
-        return 'The winner should be ' + home_team + ' by a wide margain'
+        return 'The winner should be ' + home_team + ' by a wide margin'
     elif home_odds - away_odds <=10 and home_odds - away_odds > 5:
-        return 'The winner should be ' + home_team + ' by a decent margain'
+        return 'The winner should be ' + home_team + ' by a decent margin'
     elif home_odds - away_odds <= 5 and home_odds - away_odds > 0:
-        return 'The winner should be' + home_team + ' by a small margain'
+        return 'The winner should be' + home_team + ' by a small margin'
     elif away_odds - home_odds > 10:
-        return 'The winner should be ' + away_team + ' by a wide margain'
+        return 'The winner should be ' + away_team + ' by a wide margin'
     elif away_odds - home_odds <=10 and away_odds - home_odds > 5:
-        return 'The winner should be ' + away_team + ' by a decent margain'
+        return 'The winner should be ' + away_team + ' by a decent margin'
     elif away_odds - home_odds <= 5 and away_odds - home_odds > 0:
-        return 'The winner should be ' + away_team + ' by a small margain'
+        return 'The winner should be ' + away_team + ' by a small margin'
     else:
         return 'Error processing the data'
